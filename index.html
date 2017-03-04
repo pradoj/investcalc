@@ -1,0 +1,108 @@
+<html><head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href="http://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.3.0/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+    <link href="index.css" rel="stylesheet" type="text/css">
+  </head><body>
+    <div class="section">
+      <div class="container">
+        <div class="row">
+          <div class="col-md-12">
+            <form class="form-horizontal" role="form">
+              <fieldset>
+                <!-- Form Name -->
+                <legend>InvestCalc</legend>
+                <!-- Multiple Radios -->
+                <div class="form-group">
+                  <label class="col-md-4 control-label" for="imposto-renda">IR</label>
+                  <div class="col-md-4">
+                    <div class="radio">
+                      <label for="imposto-renda-isento">
+                        <input type="radio" name="imposto-renda" id="imposto-renda-isento" value="0" checked="checked">Isento</label>
+                    </div>
+                    <div class="radio">
+                      <label for="imposto-renda-tributado">
+                        <input type="radio" name="imposto-renda" id="imposto-renda-tributado" value="1">Tributado</label>
+                    </div>
+                  </div>
+                </div>
+                <!-- Multiple Radios (inline) -->
+                <div class="form-group">
+                  <label class="col-md-4 control-label" for="prazo">Prazo</label>
+                  <div class="col-md-4">
+                    <label class="radio-inline" for="prazo-0">
+                      <input type="radio" name="prazo" id="prazo-0" value="0" checked="checked">até 6m</label>
+                    <label class="radio-inline" for="prazo-6">
+                      <input type="radio" name="prazo" id="prazo-6" value="6">até 12m</label>
+                    <label class="radio-inline" for="prazo-12">
+                      <input type="radio" name="prazo" id="prazo-12" value="12">até 24m</label>
+                    <label class="radio-inline" for="prazo-24">
+                      <input type="radio" name="prazo" id="prazo-24" value="24">24m+</label>
+                  </div>
+                </div>
+                <!-- Appended Input-->
+                <div class="form-group">
+                  <label class="col-md-4 control-label" for="taxa">Taxa rentabilidade</label>
+                  <div class="col-md-4">
+                    <div class="input-group">
+                      <input id="taxa" name="taxa" class="form-control" placeholder="0,00" type="number" step="any" value="85.00">
+                      <span class="input-group-addon">% CDI/SELIC</span>
+                    </div>
+                  </div>
+                </div>
+              </fieldset>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="section">
+      <div class="container">
+        <div class="row">
+          <div class="col-md-12">
+            <table class="table">
+              <thead>
+                <tr>
+                  <th></th>
+                  <th class="numero-tabela">até 6m</th>
+                  <th class="numero-tabela">até 12m</th>
+                  <th class="numero-tabela">até 24m</th>
+                  <th class="numero-tabela">24m+</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <th>IR / Alíquota</th>
+                  <th class="numero-tabela">22,5%</th>
+                  <th class="numero-tabela">20%</th>
+                  <th class="numero-tabela">17,5%</th>
+                  <th class="numero-tabela">15%</th>
+                </tr>
+                <tr>
+                  <th>Isento</th>
+                  <td id="isento-0" class="numero-tabela">85,00</td>
+                  <td id="isento-6" class="numero-tabela">85,00</td>
+                  <td id="isento-12" class="numero-tabela">85,00</td>
+                  <td id="isento-24" class="numero-tabela">85,00</td>
+                </tr>
+                <tr class="index">
+                  <th>Tributado</th>
+                  <td id="tributado-0" class="numero-tabela">109,68</td>
+                  <td id="tributado-6" class="numero-tabela">106,25</td>
+                  <td id="tributado-12" class="numero-tabela">103,03</td>
+                  <td id="tributado-24" class="numero-tabela">100</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+    </div>
+    <script type="text/javascript" src="http://cdnjs.cloudflare.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+    <script type="text/javascript" src="http://netdna.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
+
+    <script src="//cdnjs.cloudflare.com/ajax/libs/accounting.js/0.4.1/accounting.min.js"></script>
+    <script type="text/javascript" src="index.js"></script>
+  
+
+</body></html>
