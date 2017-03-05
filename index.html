@@ -15,13 +15,13 @@
                 <!-- Multiple Radios -->
                 <div class="form-group">
                   <label class="col-md-4 control-label" for="imposto-renda">IR</label>
-                  <div class="col-md-4">
+                  <div class="col-md-4" id="imposto-renda">
                     <div class="radio">
-                      <label for="imposto-renda-isento">
+                      <label for="imposto-renda-isento" class="conjunto-selecionado">
                         <input type="radio" name="imposto-renda" id="imposto-renda-isento" value="0" checked="checked">Isento</label>
                     </div>
                     <div class="radio">
-                      <label for="imposto-renda-tributado">
+                      <label for="imposto-renda-tributado" class="conjunto-comparacao">
                         <input type="radio" name="imposto-renda" id="imposto-renda-tributado" value="1">Tributado</label>
                     </div>
                   </div>
@@ -45,7 +45,7 @@
                   <label class="col-md-4 control-label" for="taxa">Taxa rentabilidade</label>
                   <div class="col-md-4">
                     <div class="input-group">
-                      <input id="taxa" name="taxa" class="form-control" placeholder="0,00" type="number" step="any" value="85.00">
+                      <input id="taxa" name="taxa" class="form-control" placeholder="0,00" type="number" value="85.00" step="any">
                       <span class="input-group-addon">% CDI/SELIC</span>
                     </div>
                   </div>
@@ -56,36 +56,37 @@
         </div>
       </div>
     </div>
+    <hr>
     <div class="section">
       <div class="container">
         <div class="row">
           <div class="col-md-12">
             <table class="table">
+              <colgroup>
+                <col>
+                  <col id="coluna-prazo-0">
+                    <col id="coluna-prazo-6">
+                      <col id="coluna-prazo-12">
+                        <col id="coluna-prazo-24">
+              </colgroup>
               <thead>
                 <tr>
-                  <th></th>
-                  <th class="numero-tabela">até 6m</th>
-                  <th class="numero-tabela">até 12m</th>
-                  <th class="numero-tabela">até 24m</th>
-                  <th class="numero-tabela">24m+</th>
+                  <th>Alíquota IR</th>
+                  <th class="numero-tabela" id="cabecalho-prazo-0">até 6m - 22,5%</th>
+                  <th class="numero-tabela" id="cabecalho-prazo-6">até 12m - 20%</th>
+                  <th class="numero-tabela" id="cabecalho-prazo-12">até 24m - 17,5%</th>
+                  <th class="numero-tabela" id="cabecalho-prazo-24">+ de 24m - 15%</th>
                 </tr>
               </thead>
               <tbody>
-                <tr>
-                  <th>IR / Alíquota</th>
-                  <th class="numero-tabela">22,5%</th>
-                  <th class="numero-tabela">20%</th>
-                  <th class="numero-tabela">17,5%</th>
-                  <th class="numero-tabela">15%</th>
-                </tr>
-                <tr>
+                <tr id="linha-isento" class="conjunto-selecionado">
                   <th>Isento</th>
                   <td id="isento-0" class="numero-tabela">85,00</td>
                   <td id="isento-6" class="numero-tabela">85,00</td>
                   <td id="isento-12" class="numero-tabela">85,00</td>
                   <td id="isento-24" class="numero-tabela">85,00</td>
                 </tr>
-                <tr class="index">
+                <tr id="linha-tributado" class="conjunto-comparacao">
                   <th>Tributado</th>
                   <td id="tributado-0" class="numero-tabela">109,68</td>
                   <td id="tributado-6" class="numero-tabela">106,25</td>
@@ -99,8 +100,7 @@
       </div>
     </div>
     <script type="text/javascript" src="http://cdnjs.cloudflare.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
-    <script type="text/javascript" src="http://netdna.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
-
+    <script src="http://netdna.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js" type="text/javascript"></script>
     <script src="//cdnjs.cloudflare.com/ajax/libs/accounting.js/0.4.1/accounting.min.js"></script>
     <script type="text/javascript" src="index.js"></script>
   
