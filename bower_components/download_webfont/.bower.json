@@ -1,0 +1,12 @@
+{
+  "name": "download_webfont",
+  "_cacheHeaders": {
+    "Content-Length": "13599",
+    "Content-Type": "",
+    "Content-Disposition": "attachment; filename=\"investcalc.zip\""
+  },
+  "_source": "http://www.fontsaddict.com/ajax/download_webfont.php?file=48e5289deb0d2c6cfcb26b48e0ef1dd1&name=investcalc",
+  "_target": "*",
+  "_originalSource": "http://www.fontsaddict.com/ajax/download_webfont.php?file=48e5289deb0d2c6cfcb26b48e0ef1dd1&name=investcalc",
+  "_direct": true
+}

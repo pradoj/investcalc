@@ -1,0 +1,12 @@
+{
+  "name": "jumbotron-narrow",
+  "_cacheHeaders": {
+    "Last-Modified": "Wed, 19 Oct 2016 15:43:42 GMT",
+    "Content-Type": "text/css"
+  },
+  "main": "index.css",
+  "_source": "https://getbootstrap.com/examples/jumbotron-narrow/jumbotron-narrow.css",
+  "_target": "*",
+  "_originalSource": "https://getbootstrap.com/examples/jumbotron-narrow/jumbotron-narrow.css",
+  "_direct": true
+}

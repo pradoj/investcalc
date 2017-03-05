@@ -1,0 +1,26 @@
+@font-face {
+	font-family: "investcalc";
+	src: url("investcalc.eot");
+	src: url("investcalc.eot#iefix") format("embedded-opentype"),
+	url("investcalc.woff") format("woff"),
+	url("investcalc.ttf") format("truetype"),
+	url("investcalc.svg") format("svg");
+	font-weight: normal;
+	font-style: normal;
+}
+[class^="investcalc-"]:before, [class*=" investcalc-"]:before,
+[class^="investcalc-"]:after, [class*=" investcalc-"]:after {   
+	font-family: investcalc;
+	/*font-size: 20px;
+	font-style: normal;
+	margin-left: 20px;*/
+}
+.investcalc-pay:before {
+	content: "\e800"
+}
+.investcalc-calculator:before {
+	content: "\e801"
+}
+.investcalc-search:before {
+	content: "\e802"
+}
