@@ -1,34 +1,25 @@
 (function() {
     $("form").submit(function(event){
+        $(this).blur();
         return false;
     });
+
     $("form :input").bind("change keyup click", function(event){
         var InvestCalc = {};
         InvestCalc.impostoRenda = ($("input[name='imposto-renda']:checked").val() == true);
         InvestCalc.prazo = parseInt($("input[name='prazo']:checked").val());
         InvestCalc.taxa =  parseFloat($("input[name='taxa']").val());
+        InvestCalc.taxaEquivalente = [];
 
         if (InvestCalc.impostoRenda) {
-            InvestCalc.tributado = [
-                InvestCalc.taxa,
-                InvestCalc.taxa,
-                InvestCalc.taxa,
-                InvestCalc.taxa,
-            ];
-            InvestCalc.isento = [
+            InvestCalc.taxaEquivalente = [
                 InvestCalc.taxa * (1 - 0.225),
                 InvestCalc.taxa * (1 - 0.20),
                 InvestCalc.taxa * (1 - 0.175),
                 InvestCalc.taxa * (1 - 0.15),
             ];
         } else {
-            InvestCalc.isento = [
-                InvestCalc.taxa,
-                InvestCalc.taxa,
-                InvestCalc.taxa,
-                InvestCalc.taxa,
-            ];
-            InvestCalc.tributado = [
+            InvestCalc.taxaEquivalente = [
                 InvestCalc.taxa / (1 - 0.225),
                 InvestCalc.taxa / (1 - 0.20),
                 InvestCalc.taxa / (1 - 0.175),
@@ -36,36 +27,25 @@
             ];
         }
 
-        $("#isento-0").html(accounting.formatMoney(InvestCalc.isento[0], '', 2, ".", ","));
-        $("#isento-6").html(accounting.formatMoney(InvestCalc.isento[1], '', 2, ".", ","));
-        $("#isento-12").html(accounting.formatMoney(InvestCalc.isento[2], '', 2, ".", ","));
-        $("#isento-24").html(accounting.formatMoney(InvestCalc.isento[3], '', 2, ".", ","));
-
-        $("#tributado-0").html(accounting.formatMoney(InvestCalc.tributado[0], '', 2, ".", ","));
-        $("#tributado-6").html(accounting.formatMoney(InvestCalc.tributado[1], '', 2, ".", ","));
-        $("#tributado-12").html(accounting.formatMoney(InvestCalc.tributado[2], '', 2, ".", ","));
-        $("#tributado-24").html(accounting.formatMoney(InvestCalc.tributado[3], '', 2, ".", ","));
-
-
-        // remove todas as cores
-        $("*").removeClass("conjunto-selecionado");
-        $("*").removeClass("conjunto-comparacao");
-
-        // cor coluna
-        var idColumn = "#coluna-prazo-" + InvestCalc.prazo;
-        $(idColumn  + " th").addClass("conjunto-selecionado");
+        $("#prazo-0").html(accounting.formatMoney(InvestCalc.taxaEquivalente[0], '', 2, ".", ","));
+        $("#prazo-6").html(accounting.formatMoney(InvestCalc.taxaEquivalente[1], '', 2, ".", ","));
+        $("#prazo-12").html(accounting.formatMoney(InvestCalc.taxaEquivalente[2], '', 2, ".", ","));
+        $("#prazo-24").html(accounting.formatMoney(InvestCalc.taxaEquivalente[3], '', 2, ".", ","));
 
         // cor linha
-        var idRow = "#linha-";
         if (InvestCalc.impostoRenda) {
-            idRow += "tributado";
+            $("tbody > tr")
+                .addClass("bg-info").removeClass("bg-warning");
+            $("thead > tr")
+                .addClass("bg-warning").removeClass("bg-info");
         } else {
-            idRow += "isento";
+            $("tbody > tr")
+                .addClass("bg-warning").removeClass("bg-info");
+            $("thead > tr")
+                .addClass("bg-info").removeClass("bg-warning");
         }
-        $(idRow).addClass("conjunto-selecionado");
-        $("tbody > tr:not(" + idRow + ")").addClass("conjunto-comparacao");
 
-        // cor input ir
+        // cor inputs
         var labelForIr = "label[for='imposto-renda-FOR']";
         var textFor;
         if (InvestCalc.impostoRenda) {
@@ -75,9 +55,26 @@
             labelForIr = labelForIr.replace("FOR", "isento");
             textFor = "isento";
         }
-        $(labelForIr).addClass("conjunto-selecionado");
-        $("#imposto-renda label:not([for=imposto-renda-" + textFor + "])").addClass("conjunto-comparacao");
+        $(labelForIr)
+            .addClass("bg-info").removeClass("bg-warning");
+        $("#imposto-renda label:not([for=imposto-renda-" + textFor + "])")
+            .addClass("bg-warning").removeClass("bg-info");
 
+        // cor body
+        if (InvestCalc.impostoRenda) {
+            $("body")
+                .addClass("bg-warning").removeClass("bg-info");
+        } else {
+            $("body")
+                .addClass("bg-info").removeClass("bg-warning");
+        }
+
+        // nome taxa equivalente
+        if (InvestCalc.impostoRenda) {
+            $("#taxa-equivalente").text("Isento");
+        } else {
+            $("#taxa-equivalente").text("Tributado");
+        }
     });
 
 })();
